@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+.home {
+  text-align: center;
+  padding: 20px;
+}
+
+.application-info {
+  margin-bottom: 20px;
+}
+
+.application-info p {
+  font-size: 18px;
+}
+
+.photos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.photos img {
+  width: 500px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-nav li {
+  margin-bottom: 10px;
+}
+
+.dashboard {
+  text-align: left;
+}
+
+
+.card .card-body {
+  display: flex;
+  flex-direction:column-reverse;
+  justify-content: center;
+}
+
+.card .card-link {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
