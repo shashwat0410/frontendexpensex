@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ExpenseForm from '../ExpenseForm';
+import ExpenseList from '../ExpenseList';
 
 const EmployeeDashboard = () => {
   const [showExpenseForm, setShowExpenseForm] = useState(false);
@@ -40,20 +41,7 @@ const EmployeeDashboard = () => {
         <button onClick={handleShowExpenseList}>Expense List</button>
       </div>
       {showExpenseForm && <ExpenseForm />}
-      {showExpenseList && (
-        <div>
-          <h3>My Expenses</h3>
-          {employeeExpenses.length > 0 ? (
-            <ul>
-              {employeeExpenses.map((expense) => (
-                <li key={expense.id}>{expense.title}</li>
-              ))}
-            </ul>
-          ) : (
-            <p>No expenses found.</p>
-          )}
-        </div>
-      )}
+      {showExpenseList && <ExpenseList />}
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PendingExpenses = () => {
   const [expenses, setExpenses] = useState([]);
@@ -20,7 +22,8 @@ const PendingExpenses = () => {
   const handleReject = async (id) => {
     try {
       const response = await axios.put(`https://localhost:7173/api/ManagerAPI/RejectExpense/${id}`);
-      console.log(response.data); // handle success
+      console.log(response.data);
+      toast.error('Expense rejected.'); // handle success
       fetchPendingExpenses();
     } catch (error) {
       console.error(error);
@@ -30,7 +33,8 @@ const PendingExpenses = () => {
   const handleAccept = async (id) => {
     try {
       const response = await axios.put(`https://localhost:7173/api/ManagerAPI/AcceptExpense/${id}`);
-      console.log(response.data); // handle success
+      console.log(response.data);
+      toast.success('Expense accepted.'); // handle success
       fetchPendingExpenses();
     } catch (error) {
       console.error(error);
@@ -63,15 +67,16 @@ const PendingExpenses = () => {
               <td>{expense.receipt_no}</td>
               <td>{expense.status}</td>
               <td>
-                <button className="btn btn-success" onClick={() => handleReject(expense.expenseId)}>Reject</button>
+              <button className="btn btn-success" onClick={() => handleAccept(expense.expenseId)}>Accept</button>
               </td>
               <td>
-                <button className="btn btn-danger" onClick={() => handleAccept(expense.expenseId)}>Accept</button>
+              <button className="btn btn-danger" onClick={() => handleReject(expense.expenseId)}>Reject</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <ToastContainer />
     </div>
   );
 };

@@ -1,71 +1,84 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CategoryForm = () => {
-  const [category, setCategory] = useState('');
-  const [categoryLimit, setCategoryLimit] = useState('');
+  const [category, setCategory] = useState({
+    category_Id: 0,
+    category_Name: '',
+    category_Limit: 0
+  });
 
-  const handleChange = (e) => {
-    setCategory(e.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setCategory((prevCategory) => ({
+      ...prevCategory,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      const response = await axios.post('/api/AdminAPI/PostCategory', { name: category });
-      console.log(response.data); // handle success
+      await axios.put(`https://localhost:7173/api/AdminAPI/PutCategory/category/${category.category_Id}`, category, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      // Perform any necessary actions after successful category update
+      toast.success('Category limit updated successfully!');
+      console.log('Category limit updated successfully!');
+      setCategory({
+        category_Id: 0,
+        category_Name: '',
+        category_Limit: 0
+      });
     } catch (error) {
       console.error(error);
+      toast.error('Failed to update category limit');
     }
   };
 
   return (
     <div>
-      <h2>Add Category</h2>
+      <h2>Change Category Limit</h2>
       <form className="my-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="name">Name:</label>
-          <input type="text" className="form-control" value={category} onChange={handleChange} />
+          <label htmlFor="category_Id">Category ID:</label>
+          <input
+            type="number"
+            className="form-control"
+            name="category_Id"
+            value={category.category_Id}
+            onChange={handleChange}
+          />
         </div>
         <div className="form-group">
-          <label for="categoryLimit">Category Limit:</label>
-          <input type="text" className="form-control" value={categoryLimit} onChange={handleChange} />
+          <label htmlFor="category_Name">Category Name:</label>
+          <input
+            type="text"
+            className="form-control"
+            name="category_Name"
+            value={category.category_Name}
+            onChange={handleChange}
+          />
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <div className="form-group">
+          <label htmlFor="category_Limit">Category Limit:</label>
+          <input
+            type="number"
+            className="form-control"
+            name="category_Limit"
+            value={category.category_Limit}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Update Category Limit</button>
       </form>
-
+      <ToastContainer />
     </div>
   );
 };
 
 export default CategoryForm;
-{/* <div className="col-sm-6">
-<div className="card p-4">
-  <div className="form-group">
-    <label htmlFor="email">Email address:</label>
-    <input
-      type="email"
-      className="form-control"
-      id="email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-    />
-  </div>
-  <div className="form-group mt-3">
-    <label htmlFor="pwd">Password:</label>
-    <input
-      type="password"
-      className="form-control"
-      id="pwd"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-    />
-  </div>
-  <button
-    type="button"
-    className="btn btn-primary mt-4"
-    onClick={handleLogin}
-  >
-    Submit
-  </button>
-</div> */}
