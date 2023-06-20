@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate,Routes,Route } from 'react-router-dom';
+import {  Routes, Route, useNavigate } from 'react-router-dom';
 import bcrypt from 'bcryptjs';
 import axios from 'axios';
 import AdminDashboard from './Dashboards/AdminDashboard';
@@ -10,22 +10,10 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [hashedPassword, setHashedPassword] = useState(''); // State for hashed password
   const [role, setRole] = useState('');
 
   const handlePasswordChange = (e) => {
     const inputPassword = e.target.value;
-    const saltRounds = 10; // Number of salt rounds for bcrypt hashing
-
-    // Generate hashed password using bcrypt
-    bcrypt.hash(inputPassword, saltRounds, (err, hash) => {
-      if (err) {
-        console.error(err);
-      } else {
-        setHashedPassword(hash); // Update hashed password state
-      }
-    });
-
     setPassword(inputPassword); // Update password state
   };
 
@@ -56,13 +44,13 @@ const LoginForm = () => {
           // Redirect to different dashboards based on the selected role
           switch (role) {
             case 'admin':
-              navigate('/dashboard/admin');
+              navigate('/admin');
               break;
             case 'manager':
-              navigate('/dashboard/manager');
+              navigate('/manager');
               break;
             case 'employee':
-              navigate('/dashboard/employee');
+              navigate('/employee');
               break;
             default:
               alert('Please select a role.');
@@ -122,9 +110,9 @@ const LoginForm = () => {
         <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>
         <div>
       <Routes>
-        <Route path="/dashboard/admin" element={<AdminDashboard />} />
-        <Route path="/dashboard/manager" element={<ManagerDashboard />} />
-        <Route path="/dashboard/employee" element={<EmployeeDashboard />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/manager" element={<ManagerDashboard />} />
+        <Route path="/employee" element={<EmployeeDashboard />} />
       </Routes>
     </div>
     </div>

@@ -2,9 +2,6 @@ import React from 'react';
 import '../App.css'
 import Photo1 from '../1.jpg';
 import Photo2 from '../2.jpg';
-import ManagerDashboard from './Dashboards/ManagerDashboard';
-import AdminDashboard from './Dashboards/AdminDashboard';
-import EmployeeDashboard from './Dashboards/EmployeeDashboard';
 
 const Home = () => {
   return (
@@ -16,11 +13,6 @@ const Home = () => {
       <div className="photos">
         <img src={Photo1} alt="Photo 1" />
         <img src={Photo2} alt="Photo 2" />
-      </div>
-      <div className='dashboard'>
-        <ManagerDashboard />
-        <AdminDashboard />
-        <EmployeeDashboard />
       </div>
     </div>
   );

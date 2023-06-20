@@ -4,6 +4,9 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import Dashboard from './Components/Dashboard';
 import './App.css'
+import AdminDashboard from './Components/Dashboards/AdminDashboard';
+import ManagerDashboard from './Components/Dashboards/ManagerDashboard';
+import EmployeeDashboard from './Components/Dashboards/EmployeeDashboard';
 
 function App() {
   return (
@@ -24,7 +27,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login/*" element={<Login />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/manager" element={<ManagerDashboard />} />
+        <Route path="/employee" element={<EmployeeDashboard />} />
       </Routes>
     </div>
     </div>
