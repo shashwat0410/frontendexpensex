@@ -5,6 +5,7 @@ import axios from 'axios';
 import AdminDashboard from './Dashboards/AdminDashboard';
 import ManagerDashboard from './Dashboards/ManagerDashboard';
 import EmployeeDashboard from './Dashboards/EmployeeDashboard';
+import '../App.css'
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -68,25 +69,25 @@ const LoginForm = () => {
     }
   };
 
-  const handleLogout = () => {
-    // Clear user session from session storage
-    sessionStorage.clear();
+  // const handleLogout = () => {
+  //   // Clear user session from session storage
+  //   sessionStorage.clear();
 
-    // Redirect to the login page
-    navigate('/login');
-  };
+  //   // Redirect to the login page
+  //   navigate('/login');
+  // };
 
   return (
     <div>
       <h2>Login Form</h2>
-        <form className="my-form" onSubmit={handleLogin}>
+          <form className="my-form" onSubmit={handleLogin}>
           <div className="form-group">
-            <label>Email:</label>
-            <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label htmlFor="email">Email:</label>
+            <input type="email" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="form-group">
-            <label>Password:</label>
-            <input type="password" className="form-control" value={password} onChange={handlePasswordChange} />
+            <label htmlFor="password">Password:</label>
+            <input type="password" className="form-control" id="password" value={password} onChange={handlePasswordChange} />
           </div>
           <div className="form-group">
             <label>Role:</label>
@@ -107,7 +108,8 @@ const LoginForm = () => {
           </div>
           <button type="submit" className="btn btn-primary">Login</button>
         </form>
-        <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>
+
+        {/* //<button className="btn btn-secondary" onClick={handleLogout}>Logout</button> */}
         <div>
       <Routes>
         <Route path="/admin" element={<AdminDashboard />} />

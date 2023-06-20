@@ -18,8 +18,8 @@ function App() {
         </div>
         <ul className="nav navbar-nav">
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link></li>
+          <li><Link to="/login">Login Page</Link></li>
+          <li><Link to="/dashboard">Expense Status</Link></li>
         </ul>
       </div>
     </nav>

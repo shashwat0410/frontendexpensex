@@ -156,3 +156,8 @@ button {
 button:hover {
   background-color: #45a049;
 }
+.dashboard-heading {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}

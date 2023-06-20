@@ -3,6 +3,7 @@ import CategoryForm from '../CategoryForm';
 import CategoryList from '../CategoryList';
 import EmployeeForm from '../EmployeeForm';
 import EmployeeList from '../EmployeeList';
+import './App.css'
 
 const AdminDashboard = () => {
   const [showCategoryForm, setShowCategoryForm] = useState(false);
@@ -39,9 +40,9 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div>
-      <h2>Admin Dashboard</h2>
-      <div>
+    <div className="dashboard">
+      <h2 className="dashboard-heading">Admin Dashboard</h2>
+      <div className="dashboard-container">
         <button onClick={handleShowCategoryForm}>Category Form</button>
         <button onClick={handleShowCategoryList}>Category List</button>
         <button onClick={handleShowEmployeeForm}>Employee Form</button>

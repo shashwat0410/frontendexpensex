@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ExpenseForm from '../ExpenseForm';
 import ExpenseList from '../ExpenseList';
+import './App.css'
 
 const EmployeeDashboard = () => {
   const [showExpenseForm, setShowExpenseForm] = useState(false);
@@ -34,9 +35,9 @@ const EmployeeDashboard = () => {
   };
 
   return (
-    <div>
-      <h2>Employee Dashboard</h2>
-      <div>
+    <div className="dashboard">
+      <h2 className="dashboard-heading">Employee Dashboard</h2>
+      <div className="dashboard-container">
         <button onClick={handleShowExpenseForm}>Expense Form</button>
         <button onClick={handleShowExpenseList}>Expense List</button>
       </div>
