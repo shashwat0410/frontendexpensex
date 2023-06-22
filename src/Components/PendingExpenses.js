@@ -44,7 +44,7 @@ const PendingExpenses = () => {
   return (
     <div>
       <h2>Pending Expenses</h2>
-      <table className="table table-dark table-hover">
+      <table className="table table-light table-hover">
         <thead>
         <tr>
             <th scope="col">ID</th>

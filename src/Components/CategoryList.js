@@ -20,7 +20,7 @@ const CategoryList = () => {
   return (
     <div>
       <h2>Category List</h2>
-      <table className="table table-dark table-hover">
+      <table className="table table-light table-hover">
         <thead>
           <tr>
             <th>ID</th>

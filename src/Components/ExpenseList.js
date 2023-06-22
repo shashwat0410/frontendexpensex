@@ -20,7 +20,7 @@ const ExpenseList = () => {
   return (
     <div>
       <h2>Expense List</h2>
-      <table className="table table-dark table-hover">
+      <table className="table table-light table-hover">
         <thead>
           <tr>
             <th>ID</th>

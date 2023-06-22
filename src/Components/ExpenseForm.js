@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ employee }) => {
   const [formData, setFormData] = useState({
     expenseId: 0,
-    emp_Id: 0,
+    emp_Id: employee.emp_Id,
     description: '',
     amount: 0,
     receipt_no: 0,
@@ -22,6 +22,13 @@ const ExpenseForm = () => {
     submissionDate: new Date().toISOString(),
     managerDate: new Date().toISOString()
   });
+
+  useEffect(() => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      emp_Id: employee.emp_Id
+    }));
+  }, [employee]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -51,7 +58,7 @@ const ExpenseForm = () => {
     <div>
       <h2>Create Expense</h2>
       <form className="my-form" onSubmit={handleSubmit}>
-       <div className="form-group">
+        <div className="form-group">
           <label htmlFor="emp_Id">Employee ID:</label>
           <input
             type="number"
@@ -59,6 +66,7 @@ const ExpenseForm = () => {
             name="emp_Id"
             value={formData.emp_Id}
             onChange={handleChange}
+            readOnly
           />
         </div>
         <div className="form-group">
@@ -101,6 +109,8 @@ const ExpenseForm = () => {
             onChange={handleChange}
           />
         </div>
+        {/* Render other input fields for expense details */}
+        {/* ... */}
         <button type="submit" className="btn btn-primary">Create Expense</button>
       </form>
       <ToastContainer />
